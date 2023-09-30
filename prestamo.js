@@ -2,31 +2,72 @@ console.log("---------------aplicacion para prestamos--------------------");
 
 let mayorEdad = false;
 
-const prestamo = () => {
-  let nombre = prompt("ingresando nombre del cliente: ");
-  let edad = parseInt(prompt("ingresando edad del cliente: "));
+const validarEdad = () => {
+  let edad;
+  while (mayorEdad === false) {
+    let edad = prompt("ingresar edad");
+    if (edad === "" || edad === null) {
+      alert("llenar espacio");
+    } else {
+      edad = parseInt(edad);
+      if (edad > 18) {
+        mayorEdad = true;
+      } else {
+        mayorEdad = false;
+      }
 
-  if (edad >= 18) {
-    mayorEdad = true;
-  } else {
-    mayorEdad = false;
-    return alert(
-      `${nombre} es menor de edad, y no se le puede dar un prestamo`
-    );
-  }
-
-  if (mayorEdad == true) {
-    let sueldo = parseInt(prompt("ingrese sueldo del cliente: "));
-    if (sueldo > 1000) {
-      console.log(
-        `el cliente ${nombre} gana mas de 1000, asi que si le podemos dar un prestamo`
-      );
-    } else if (sueldo < 1000) {
-      console.log(
-        `el cliente ${nombre} gana menos de 1000, asi que no le podemos dar el prestamo`
-      );
+      if (mayorEdad === true) {
+        console.log("dato correcto, vamos al sgte dato");
+      } else if (mayorEdad == false) {
+        alert("solo para mayores de 18, ingrese otra edad");
+        // edad = parseInt(prompt("ingrese edad: "));
+      }
     }
   }
 };
 
-prestamo();
+const validarNombre = () => {
+  let nombre;
+  while (true) {
+    let valor = prompt("ingresar nombre");
+    if (valor === "" || valor === null) {
+      alert("llenar espacio");
+    } else {
+      console.log("dato correcto, vamos al sgte dato");
+      nombre = valor;
+
+      break;
+    }
+  }
+};
+
+const validarSueldo = () => {
+  let sueldo;
+  while (sueldo !== "" || sueldo !== null) {
+    let sueldo = prompt("ingresar sueldo");
+    if (sueldo === "" || sueldo === null) {
+      alert("llenar espacio");
+    } else {
+      sueldo = parseInt(sueldo);
+
+      if (sueldo > 1000) {
+        alert(`si podemos darle un prestamo ,felicdades`);
+        break;
+      } else {
+        alert(`no podemos darle un prestamo, lo lamentamos`);
+        break;
+      }
+    }
+
+    //   alert("no podemos darle un prestamo, lo sentimos");
+    //   break;
+    // } else if (sueldo >= 1000) {
+    //   valor = sueldo;
+    //   alert("felidicades, si podemos darle un prestamo");
+    //   break;
+  }
+};
+
+validarEdad();
+validarNombre();
+validarSueldo();
